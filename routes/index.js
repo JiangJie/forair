@@ -1,8 +1,8 @@
-var route = function(app) {
-	app.get('/', function(req, res, next) {
-		res.end('hello');
-	});
-};
-exports = module.exports = {
-	route: route
+
+/*
+ * GET home page.
+ */
+
+exports.index = function(req, res){
+  res.render('index', { title: 'Express' });
 };
