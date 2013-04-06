@@ -15,12 +15,13 @@
   <section class="main">
     <div class="content">
       <h3 class="wc-wording">欢迎注册iPet</h3>
+      <h4 id="signupSuccessText" class="hide">注册成功</h4>
       <div class="row-fluid">
         <div class="span7">
-          <form class="form-horizontal" action="/user" method="POST">
+          <div class="form-horizontal">
             <div class="control-group">
               <div class="controls">
-                <input type="email" id="signupEmail" name="uid" placeholder="邮箱地址" required="required">
+                <input type="email" id="signupEmail" placeholder="邮箱地址" required="required">
                 <span id="emailExist" class="hide">
                   <i class="icon-idog-remove"></i>
                   <span class="text-error">该邮箱已被注册</span>
@@ -33,22 +34,22 @@
             </div>
             <div class="control-group">
               <div class="controls">
-                <input type="text" placeholder="昵称" name="nickname" required="required"></div>
+                <input type="text" placeholder="昵称" id="signupNickname" required="required"></div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <input type="password" id="signupPassword" name="pwd" placeholder="密码" required="required"></div>
+                <input type="password" id="signupPassword" placeholder="密码" required="required"></div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <input type="password" id="signupRePassword" name="rePwd" placeholder="确认密码" required="required"></div>
+                <input type="password" id="signupRePassword" placeholder="确认密码" required="required"></div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <button type="submit" class="btn btn-warning">立即注册</button>
+                <button id="signupSubmit" class="btn btn-warning">立即注册</button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
         <div class="span5">
           <h5>
@@ -69,14 +70,14 @@
       <a href="/" class="show logo-icon"></a>
     </div>
     <div class="modal-body">
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="/user/signin" method="POST">
         <div class="control-group">
           <div class="controls">
-            <input type="email" placeholder="邮箱地址" id="signinEmail" required="required"></div>
+            <input type="email" placeholder="邮箱地址" name="uid" id="signinEmail" required="required"></div>
         </div>
         <div class="control-group">
           <div class="controls">
-            <input type="password" placeholder="密码" id="signinPassword" required="required"></div>
+            <input type="password" placeholder="密码" name="pwd" id="signinPassword" required="required"></div>
         </div>
         <div class="control-group">
           <div class="controls">

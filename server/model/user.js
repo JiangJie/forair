@@ -11,6 +11,11 @@ var user = {
     db.user.insert(user, {safe: true}, d.intercept(function(user) {
       return cb(user);
     }));
+  },
+  findByUser: function(user, cb) {
+    db.user.findOne(user, d.intercept(function(user) {
+      return cb(user);
+    }));
   }
 };
 

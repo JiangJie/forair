@@ -1,26 +1,53 @@
 require(['jquery', 'bootstrap'], function($) {
+  var cgi = {
+    userExist: {url: '/user/exist', method: 'GET'},
+    signup: {url: '/user/signup', method: 'POST'}
+  };
   // if(document.getElementById('signupPassword').value.trim() != document.getElementById('signupRePassword').value.trim()) {
   // }
 
-  // $('#signinModal').on('show', function(e) {
-  //   $('#signinEmail').attr('value', '');
-  //   $('#signinPassword').attr('value', '');
-  // });
+  $('#signinModal').on('show', function(e) {
+    $('#signinEmail').val('');
+    $('#signinPassword').val('');
+  });
 
-
-  $('#signupEmail').change(function() {
+  $('#signupEmail').on('change', function() {
     $('#emailExist').addClass('hide');
     var self = this;
     if(self.value.trim()) {
       $.ajax({
-        url: '/user/exist',
+        url: cgi.userExist.url,
+        type: cgi.userExist.method,
         dataType: 'json',
-        data: {uid: self.value},
+        data: {uid: self.value.trim()},
         success: function(res) {
           console.log(res);
           if(res.recode === 0) {
             if(res.isExist) return $('#emailExist').removeClass('hide');
             return $('#emailNotExist').removeClass('hide');
+          }
+        },
+        error: function(res) {
+          console.log(res);
+        }
+      });
+    }
+  });
+
+  $('#signupSubmit').on('click', function() {
+    var uid = $('#signupEmail').val().trim(),
+      pwd = $('#signupPassword').val().trim(),
+      rePwd = $('#signupRePassword').val().trim(),
+      nickname = $('#signupNickname').val().trim();
+    if(uid && pwd && rePwd && nickname && (pwd === rePwd)) {
+      $.ajax({
+        url: cgi.signup.url,
+        type: cgi.signup.method,
+        dataType: 'json',
+        data: {uid: uid, pwd: pwd, rePwd: rePwd, nickname: nickname},
+        success: function(res) {
+          if(res.recode === 0) {
+            if(res.success) return $('#signupSuccessText').removeClass('hide');
           }
         },
         error: function(res) {
