@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <title>iDog - 爱犬之家 | 注册</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+  <link rel="stylesheet" href="/jarvis/css/signup.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo content">
+      <a href="/" class="show logo-icon"></a>
+    </div>
+  </header>
+  <section class="main">
+    <div class="content">
+      <h3 class="wc-wording">欢迎注册iPet</h3>
+      <div class="row-fluid">
+        <div class="span7">
+          <form class="form-horizontal" action="/user" method="POST">
+            <div class="control-group">
+              <div class="controls">
+                <input type="email" id="signupEmail" name="uid" placeholder="邮箱地址" required="required">
+                <span id="emailExist" class="hide">
+                  <i class="icon-idog-remove"></i>
+                  <span class="text-error">该邮箱已被注册</span>
+                </span>
+                <span id="emailNotExist" class="hide">
+                  <i class="icon-idog-ok"></i>
+                  <span class="text-success">该邮箱可以注册</span>
+                </span>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <input type="text" placeholder="昵称" name="nickname" required="required"></div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <input type="password" id="signupPassword" name="pwd" placeholder="密码" required="required"></div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <input type="password" id="signupRePassword" name="rePwd" placeholder="确认密码" required="required"></div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-warning">立即注册</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="span5">
+          <h5>
+            已有iPet账号？
+            <a href="#signinModal" id="signinA" data-toggle="modal">登录</a>
+          </h5>
+          <div>
+            <p>你还可以用以下账号直接登录：</p>
+            <a href="" class="show signin-qq"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="signinModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <a href="/" class="show logo-icon"></a>
+    </div>
+    <div class="modal-body">
+      <form class="form-horizontal">
+        <div class="control-group">
+          <div class="controls">
+            <input type="email" placeholder="邮箱地址" id="signinEmail" required="required"></div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <input type="password" placeholder="密码" id="signinPassword" required="required"></div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-warning signin-btn">登录</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="" class="show signin-qq"></a>
+    </div>
+  </div>
+  <script type="text/javascript" data-main="/jarvis/js/signup.js" src="/jarvis/js/require.js"></script>
+  <script type="text/javascript" src="/jarvis/js/config.js"></script>
+</body>
+</html>
