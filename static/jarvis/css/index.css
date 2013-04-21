@@ -1,0 +1,31 @@
+header {
+  min-height: 40px;
+  background-image: linear-gradient(to bottom, rgb(78, 78, 12), rgb(77, 114, 12));
+}
+.navbar {
+  margin: 0;
+}
+.content {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.logo {
+  display: inline-block;
+  width: 92px;
+  height: 40px;
+  float: left;
+}
+.dropdown:hover {
+  background-color: #eeeeee;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+  display: block;
+}
+a.menu:after, .dropdown-toggle:after {
+  content: none;
+}
+section.main {
+  background: url(/jarvis/img/background.png);
+  width: 100%;
+  height: 100%;
+}
