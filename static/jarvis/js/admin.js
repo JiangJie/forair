@@ -1,0 +1,36 @@
+require(['jquery', 'bootstrap'], function($) {
+  var cgi = {
+    addProduct: {url: '/admin/product/add', method: 'POST'}
+  };
+
+  $('#productAdd').on('click', function() {
+    var productName = $('#productName').val().trim(),
+      productUrl = $('#productUrl').val().trim(),
+      productImgUrl = $('#productImgUrl').val().trim();
+    if(productName && productUrl && productImgUrl) {
+      $.ajax({
+        url: cgi.addProduct.url,
+        type: cgi.addProduct.method,
+        dataType: 'json',
+        data: {product: {name: productName, url: productUrl, img: productImgUrl}},
+        success: function(res) {
+          if(res.recode === 0) {
+            $('#productName').val('');
+            $('#productUrl').val('');
+            $('#productImgUrl').val('');
+            if(res.success) {
+              setTimeout(function() {
+                $('#showSuccess').addClass('hide');
+              }, 3000);
+              return $('#showSuccess').removeClass('hide');
+            }
+
+          }
+        },
+        error: function(res) {
+          console.log(res);
+        }
+      });
+    }
+  });
+});

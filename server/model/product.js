@@ -13,7 +13,7 @@ var product = {
     if(limit > 0) {
       db.product.find({}).skit(start).limit(limit, d.intercept(function(product) {
         return cb(product);
-      });
+      }));
     } else {
       return cb([]);
     }

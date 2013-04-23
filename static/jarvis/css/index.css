@@ -4,6 +4,9 @@ body {
 header {
   min-height: 40px;
   background-image: linear-gradient(to bottom, rgb(78, 78, 12), rgb(77, 114, 12));
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 }
 .navbar {
   margin: 0;
@@ -26,6 +29,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu{
 }
 a.menu:after, .dropdown-toggle:after {
   content: none;
+}
+.main {
+  position: relative;
+  top: 46px;
+  z-index: 1;
 }
 
 article{

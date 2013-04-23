@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <title>iDog - 爱犬之家 | 管理员</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+</head>
+<body>
+  <div class="form-horizontal">
+    <div class="control-group">
+      <div class="controls">
+        <h2>添加新产品</h2>
+        <span id="showSuccess" class="text-success hide">新产品添加成功</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" id="productName" placeholder="产品名称" required="required">
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" placeholder="产品URL" id="productUrl" required="required"></div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" id="productImgUrl" placeholder="图片URL" required="required"></div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <button id="productAdd" class="btn btn-warning">添加</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" data-main="/jarvis/js/admin.js" src="/jarvis/js/require.js"></script>
+  <script type="text/javascript" src="/jarvis/js/config.js"></script>
+</body>
+</html>
