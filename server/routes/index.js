@@ -7,6 +7,8 @@ var route = function(app) {
   app.post('/user/signin', user.signin);
 
   app.post('/admin/product/add', product.create);
+
+  app.get('/product/more', product.get);
 };
 
 module.exports = {

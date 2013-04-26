@@ -1,52 +1,58 @@
 require([
   'jquery',
-  '/jarvis/js/jquery-plugin/jquery.jribbble.min.js',
   '/jarvis/js/jquery-plugin/jquery.isotope.min.js',
   '/jarvis/js/jquery-plugin/jquery.imagesloaded.min.js',
   'bootstrap'
 ], function($) {
-  $(document).ready(function(){
-    var $wallcontent=$('#wallcontent'), pagenum=1, $showmore = $('#showmore');
+  var cgi = {
+    more: {url: '/product/more', method: 'GET'}
+  };
+
+  $(document).ready(function() {
+    var $wallcontent = $('#wallcontent'),
+      $showmore = $('#showmore'),
+      pagenum=1;
 
     $wallcontent.isotope({
       itemSelector : 'article'
     });
 
-    $showmore.bind('click', loadshots);
-
-    function loadshots(){
+    var loadProducts = function() {
       $showmore.unbind('click');
       $(this).text('加载中...');
 
-      $.jribbble.getShotsByList("popular", function(data){
+      $.ajax({
+        url: cgi.more.url,
+        type: cgi.more.method
+      }).then(function(res) {
+        if(res.recode === 0) {
+          var items = [];
+          $.each(res.products, function(i, shot) {
+            items.push('<article>');
+            items.push('<div class="details"><h2 title="' + shot.name + '">' + shot.name + '</h2></div>');
+            items.push('<a href="' + shot.url + '" target="_blank" class="linkc">');
+            items.push('<img src="' + shot.img + '" alt="' + shot.name + '">');
+            items.push('</a></article>');
+          });
 
-        var items = [];
+          var newEls = items.join('');
 
-        $.each(data.shots, function (i, shot) {
-          items.push('<article>');
-          items.push('<div class="details"><h2>' + shot.title + '</h2></div>');
-          items.push('<a href="' + shot.url + '" target="_blank" class="linkc">');
-          items.push('<img src="' + shot.image_teaser_url + '" alt="' + shot.title + '">');
-          items.push('</a>');
-          items.push('<div class="author">设计师：<a href="' + shot.player.url + '">' + shot.player.name + '</a></div></article>');
-        });
-
-        var newEls = items.join('');
-
-        var testcontent = $(newEls);
-        $wallcontent.append(testcontent);
-        $wallcontent.imagesLoaded(function(){
-          $wallcontent.isotope('appended', testcontent).isotope('reLayout');
-          $showmore.text('更多设计 (More)...').bind('click', loadshots);
-        });
-
-      },
-      {page: pagenum, per_page: 10});
-
+          var testcontent = $(newEls);
+          $wallcontent.append(testcontent);
+          $wallcontent.imagesLoaded(function() {
+            $wallcontent.isotope('appended', testcontent).isotope('reLayout');
+            $showmore.text('更多爱犬用品 (More)...').bind('click', loadProducts);
+          });
+        } else {
+          $showmore.text('更多爱犬用品 (More)...').bind('click', loadProducts);
+        }
+      }, function(err) {
+        $showmore.text('更多爱犬用品 (More)...').bind('click', loadProducts);
+        console.log(err);
+      });
       pagenum++;
-
     }
-
+    $showmore.bind('click', loadProducts);
     $showmore.trigger('click');
 
   });
@@ -54,12 +60,8 @@ require([
   /* ---------------------------------------------------------------------- */
   /*  back to up
   /* ---------------------------------------------------------------------- */
-  $(function(){
-    $('body').append('<div id="backtotop" class="showme"><div class="bttbg"></div></div>');
-    initGoToTop();
-  });
 
-  function initGoToTop() {
+  var initGoToTop = function() {
     var orig_scroll_height = $('footer').position().top - $(window).height() - 200;
 
     // fade in #top_button
@@ -88,4 +90,8 @@ require([
       $('#backtotop').addClass('showme');
     }
   }
+  $(function(){
+    $('body').append('<div id="backtotop" class="showme"><div class="bttbg"></div></div>');
+    initGoToTop();
+  });
 });

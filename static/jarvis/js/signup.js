@@ -19,17 +19,14 @@ require(['jquery', 'bootstrap'], function($) {
         url: cgi.userExist.url,
         type: cgi.userExist.method,
         dataType: 'json',
-        data: {uid: self.value.trim()},
-        success: function(res) {
-          console.log(res);
-          if(res.recode === 0) {
-            if(res.isExist) return $('#emailExist').removeClass('hide');
-            return $('#emailNotExist').removeClass('hide');
-          }
-        },
-        error: function(res) {
-          console.log(res);
+        data: {uid: self.value.trim()}
+      }).then(function(res) {
+        if(res.recode === 0) {
+          if(res.isExist) return $('#emailExist').removeClass('hide');
+          return $('#emailNotExist').removeClass('hide');
         }
+      }, function(res) {
+        console.log(res);
       });
     }
   });
@@ -44,15 +41,13 @@ require(['jquery', 'bootstrap'], function($) {
         url: cgi.signup.url,
         type: cgi.signup.method,
         dataType: 'json',
-        data: {uid: uid, pwd: pwd, rePwd: rePwd, nickname: nickname},
-        success: function(res) {
-          if(res.recode === 0) {
-            if(res.success) return $('#signupSuccessText').removeClass('hide');
-          }
-        },
-        error: function(res) {
-          console.log(res);
+        data: {uid: uid, pwd: pwd, rePwd: rePwd, nickname: nickname}
+      }).then(function(res) {
+        if(res.recode === 0) {
+          if(res.success) return $('#signupSuccessText').removeClass('hide');
         }
+      }, function(res) {
+        console.log(res);
       });
     }
   });

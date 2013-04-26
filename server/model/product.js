@@ -11,7 +11,7 @@ var product = {
     var start = parseInt(option.start, 10) || 0,
       limit = parseInt(option.limit, 10);
     if(limit > 0) {
-      db.product.find({}).skit(start).limit(limit, d.intercept(function(product) {
+      db.product.find({}).skip(start).limit(limit, d.intercept(function(product) {
         return cb(product);
       }));
     } else {

@@ -10,5 +10,10 @@ module.exports = {
     } else {
       return res.json({recode: 0, success: 0});
     }
+  },
+  get: function(req, res, next) {
+    procudtModel.find({limit: 10}, function(result) {
+      res.json({recode: 0, products: result});
+    });
   }
 };
