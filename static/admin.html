@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <title>iDog - 爱犬之家 | 管理员</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+  <link rel="stylesheet" type="text/css" href="/jarvis/css/admin.css">
 </head>
 <body>
   <div class="form-horizontal">
@@ -24,7 +25,12 @@
     </div>
     <div class="control-group">
       <div class="controls">
-        <input type="url" id="productImgUrl" placeholder="图片URL" required="required"></div>
+        <input type="url" id="productImgUrl" placeholder="图片URL" required="required">
+        <button id="productImgPreview" class="btn btn-warning">预览</button>
+      </div>
+      <div class="controls">
+        <img src="" class="preview"/>
+      </div>
     </div>
     <div class="control-group">
       <div class="controls">

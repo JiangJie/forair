@@ -10,7 +10,7 @@ require([
     like: {url: '/product/like', method: 'PUT'}
   };
   var start = 0,
-    limit = 12;
+    limit = 15;
   var hasNext = true;
   var alLike = 'allike';
 
@@ -57,8 +57,10 @@ require([
                     $(self).addClass(alLike);
                     $(self).attr('title', '已收藏');
                   } else {
-                    $(self).removeClass(alLike);
-                    $(self).attr('title', '收藏');
+                    // $(self).removeClass(alLike);
+                    // $(self).attr('title', '收藏');
+                    $(self).parent('article').remove();
+                    $wallcontent.isotope('reLayout');
                   }
                 }
               }, function(err) {

@@ -33,7 +33,19 @@ require(['jquery', 'bootstrap'], function($) {
       }).always(function() {
         $(self).removeAttr('disabled');
         $(self).html('添加');
+        $('.controls img.preview').animate({
+          height: 0
+        }, 400);
       });
+    }
+  });
+
+  $('#productImgPreview').on('click', function() {
+    var previewImg = $('.controls img.preview');
+    if(previewImg.css('height') == '0px') {
+      previewImg.attr('src', $('#productImgUrl').val().trim()).animate({
+        height: 300
+      }, 400);
     }
   });
 });

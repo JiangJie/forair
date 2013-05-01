@@ -1,5 +1,6 @@
 body {
-  background: url(/jarvis/img/background.png);
+  /*background: url(/jarvis/img/background.png);*/
+  background: rgb(220, 224, 206);
 }
 header {
   min-height: 40px;

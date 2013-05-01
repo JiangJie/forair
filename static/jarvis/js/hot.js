@@ -10,7 +10,7 @@ require([
     like: {url: '/product/like', method: 'PUT'}
   };
   var start = 0,
-    limit = 12;
+    limit = 15;
   var hasNext = true;
   var alLike = 'allike';
 
