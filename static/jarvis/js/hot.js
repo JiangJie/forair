@@ -6,7 +6,7 @@ require([
   'bootstrap'
 ], function($) {
   var cgi = {
-    more: {url: '/product/more', method: 'GET'},
+    more: {url: '/product/more/hot', method: 'GET'},
     like: {url: '/product/like', method: 'PUT'}
   };
   var start = 0,

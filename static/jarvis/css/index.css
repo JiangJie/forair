@@ -35,6 +35,21 @@ a.menu:after, .dropdown-toggle:after {
   top: 46px;
   z-index: 1;
 }
+article .like {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  float: right;
+  position: relative;
+  top: 5px;
+  background: url(/jarvis/img/like.png);
+}
+article .allike {
+  background-position: 0 -20px;
+}
+article .like:hover {
+  background-position: 0 -20px;
+}
 
 article{
   width: 181px;
@@ -64,63 +79,6 @@ h2{
   overflow:hidden;
   white-space:nowrap;
   line-height: 20px;
-}
-
-#morewrapper{
-  text-align:center;
-  padding:30px;
-  position: relative;
-}
-
-#morewrapper span {
-    margin: -22px 5px 0 0;
-    position: absolute;
-    top: 50%;
-  background: url('/jarvis/img/dribbble.png') no-repeat 50% 50%;
-  width: 46px;
-  height: 45px;
-}
-
-#morewrapper a{
-  font-size:14px;
-  font-family: 'microsoft yahei', Arial, sans-serif;
-  color: #D85588;
-  font-weight: 600;
-  text-shadow: 0 1px 1px #D85588;
-  border: 1px solid #DDDDDD;
-  background: #f1f1f1; /* for non-css3 browsers */
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#ffffff,endColorStr=#fafafa); /* for IE */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#ffffff,endColorStr=#fafafa)"; /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fafafa)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #ffffff,  #fafafa); /* for firefox 3.6+ */
-  margin: 0;
-  padding: 10px 10px 10px 45px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  text-decoration: none;
-  cursor:pointer;
-  left: 10px;
-}
-
-#morewrapper a:hover{
-  background: #D85588;
-  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#313639333,endColorStr=#313639333); /* for IE */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#313639333,endColorStr=#313639333)"; /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#313639333), to(#313639333)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #313639333,  #313639333); /* for firefox 3.6+ */
-  color: #fff;
-  border: 1px solid #EEEEEE;
-  text-decoration: none
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-}
-
-.morebutton{
-  width: 216px;
-  margin: 0 auto;
-  position: relative;
 }
 
 footer{

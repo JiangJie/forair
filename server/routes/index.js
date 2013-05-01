@@ -9,6 +9,10 @@ var route = function(app) {
   app.post('/admin/product/add', product.create);
 
   app.get('/product/more', product.get);
+  app.get('/product/more/like', product.getLike);
+  app.get('/product/more/hot', product.getHot);
+
+  app.put('/product/like/:pid', product.likeOrNot);
 };
 
 module.exports = {

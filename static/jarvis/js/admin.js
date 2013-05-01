@@ -10,6 +10,7 @@ require(['jquery', 'bootstrap'], function($) {
       productImgUrl = $('#productImgUrl').val().trim();
     if(productName && productUrl && productImgUrl) {
       $(self).attr('disabled', 'disabled');
+      $(self).html('添加中...');
       $.ajax({
         url: cgi.addProduct.url,
         type: cgi.addProduct.method,
@@ -31,6 +32,7 @@ require(['jquery', 'bootstrap'], function($) {
         console.log(res);
       }).always(function() {
         $(self).removeAttr('disabled');
+        $(self).html('添加');
       });
     }
   });

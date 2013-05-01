@@ -52,8 +52,8 @@ module.exports = {
       pwd = req.body.pwd;
     if(uid && pwd) {
       auth(uid, pwd, function() {
-        res.cookie('uid', uid);
-        res.cookie('skey', pwd);
+        res.cookie('uid', uid, {maxAge: 864000000000});
+        res.cookie('skey', pwd, {maxAge: 864000000000});
         return res.redirect('/');
       }, function() {
         return res.json({recode: 0, success: 0});

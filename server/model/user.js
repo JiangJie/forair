@@ -1,4 +1,4 @@
-var db = require('../mongo'),
+var db = require('../mongo').db,
   d = require('../domain');
 
 var user = {
