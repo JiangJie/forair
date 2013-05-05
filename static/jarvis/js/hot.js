@@ -33,7 +33,7 @@ require([
               hasNext = false;
             }
             start = start + res.products.length;
-            var template = '{% for product in products %}<article><div class="details"><h2 title="{{ product.name }}">{{ product.name }}</h2></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.img }}" alt="{{ product.name }}"></a><button{% if product.alLike %} class="like ' + alLike + '" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
+            var template = '{% for product in products %}<article><div class="details"><h6 title="{{ product.title }}" class="product-title">{{ product.title }}</h6></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><button{% if product.alLike %} class="like ' + alLike + '" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
               context = {products: res.products};
             var content = Jinja.render(template, context);
             content = $(content);

@@ -1,6 +1,7 @@
 body {
   background: #f2f0f0;
   font-family: Tahoma,"Microsoft Yahei",Arial;
+  font-size: 62.5%;
 }
 .content {
   max-width: 1024px;

@@ -6,13 +6,16 @@ var route = function(app) {
   app.post('/user/signup', user.signup);
   app.post('/user/signin', user.signin);
 
-  app.post('/admin/product/add', product.create);
+  // app.post('/admin/product/add', product.create);
 
   app.get('/product/more', product.get);
   app.get('/product/more/like', product.getLike);
   app.get('/product/more/hot', product.getHot);
 
   app.put('/product/like/:pid', product.likeOrNot);
+
+  app.get('/product/share', product.share);
+  app.post('/product/add', product.create);
 };
 
 module.exports = {

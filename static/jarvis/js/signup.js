@@ -3,15 +3,13 @@ require(['jquery', 'bootstrap'], function($) {
     userExist: {url: '/user/exist', method: 'GET'},
     signup: {url: '/user/signup', method: 'POST'}
   };
-  // if(document.getElementById('signupPassword').value.trim() != document.getElementById('signupRePassword').value.trim()) {
-  // }
 
-  $('#signinModal').on('show', function(e) {
+  $(document).delegate('#signinModal', 'show', function() {
     $('#signinEmail').val('');
     $('#signinPassword').val('');
   });
 
-  $('#signupEmail').on('change', function() {
+  $(document).delegate('#signupEmail', 'change', function() {
     $('#emailExist').addClass('hide');
     var self = this;
     if(self.value.trim()) {
@@ -31,7 +29,7 @@ require(['jquery', 'bootstrap'], function($) {
     }
   });
 
-  $('#signupSubmit').on('click', function() {
+  $(document).delegate('#signupSubmit', 'click', function() {
     var uid = $('#signupEmail').val().trim(),
       pwd = $('#signupPassword').val().trim(),
       rePwd = $('#signupRePassword').val().trim(),
