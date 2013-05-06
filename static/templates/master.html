@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <title>iDog - 爱犬之家</title>
+  <title>{{ block title }}iDog{{ endblock }} - 爱犬之家</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"/>
-  <link rel="stylesheet" href="/jarvis/css/index.css">
+  {{ block css}}{{ endblock }}
 </head>
 <body>
   <header>
@@ -13,10 +13,10 @@
       </a>
       <div class="navbar">
         <ul class="nav">
-          <li class="dropdown">
+          <li class="dropdown active">
             <a href="/">首页</a>
           </li>
-<!--           <li class="dropdown">
+          <li class="dropdown">
             <ul class="nav">
               <li class="dropdown">
                 <a href="javascript:void(0);" class="dropdown-toggle">类别 <b class="caret"></b></a>
@@ -27,7 +27,7 @@
                 </ul>
               </li>
             </ul>
-          </li> -->
+          </li>
           <li class="dropdown">
             <a href="">最新推荐</a>
           </li>
@@ -48,20 +48,17 @@
               <li><a tabindex="-1" href="#">我的收藏</a></li>
               <li><a tabindex="-1" href="#">我关注的人</a></li>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="/user/logout">退出</a></li>
+              <li><a tabindex="-1" href="#">退出</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
   </header>
-  <section class="main">
-    <div class="content">
-      <section id="wallcontent"></section>
-    </div>
-  </section>
+  {{ block main}}{{ endblock }}
   <footer id="footer"></footer>
-  <script type="text/javascript" data-main="/jarvis/js/hot.js" src="/jarvis/js/require.js"></script>
+  {{ block extra }}{{ endblock }}
   <script type="text/javascript" src="/jarvis/js/config.js"></script>
+  {{ block js}}{{ endblock }}
 </body>
 </html>

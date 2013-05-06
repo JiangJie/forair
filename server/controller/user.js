@@ -14,12 +14,12 @@ module.exports = {
       skey = req.cookies.skey;
     if(uid && skey) {
       auth(uid, skey, function() {
-        next();
+        return next();
       }, function() {
-        res.end();
+        return res.end();
       });
     } else {
-      res.end();
+      return res.end();
     }
   },
   isExist: function(req, res, next) {
@@ -30,7 +30,7 @@ module.exports = {
         return res.json({recode: 0, isExist: 1});
       });
     } else {
-      res.json({recode: 0, isExist: 0});
+      return res.json({recode: 0, isExist: 0});
     }
   },
   signup: function(req, res, next) {
@@ -41,10 +41,10 @@ module.exports = {
     if(uid && pwd && rePwd && nickname && (pwd === rePwd)) {
       var user = {uid: uid, pwd: pwd, nickname: nickname};
       userModel.create(user, function() {
-        res.json({recode: 0, success: 1});
+        return res.json({recode: 0, success: 1});
       });
     } else {
-      res.json({recode: 0, success: 0});
+      return res.json({recode: 0, success: 0});
     }
   },
   signin: function(req, res, next) {
@@ -59,7 +59,44 @@ module.exports = {
         return res.json({recode: 0, success: 0});
       });
     } else {
-      res.json({recode: 0, success: 0});
+      return res.json({recode: 0, success: 0});
+    }
+  },
+  logout: function(req, res, next) {
+    var referer = req.headers.referer;
+    res.clearCookie('uid');
+    res.clearCookie('skey');
+    if(referer) return res.redirect(referer);
+    return res.redirect('/');
+  },
+  info: function(req, res, next) {
+    var uid = req.cookies.uid,
+      skey = req.cookies.skey;
+    var u = req.query.u || uid;
+    if(!u) {
+      if(uid) {
+        userModel.findByUid(uid, function(user) {
+          if(!user) return res.json({recode: 0});
+          return res.json({recode: 0, info: {nickname: user.nickname, private: 1}});
+        });
+      } else {
+        return res.json({recode: 0});
+      }
+    }
+    else if(u == uid && uid && skey) {
+      auth(uid, skey, function() {
+        userModel.findByUid(uid, function(user) {
+          if(!user) return res.json({recode: 0});
+          return res.json({recode: 0, info: {nickname: user.nickname, private: 1}});
+        });
+      }, function() {
+        return res.json({recode: 0});
+      });
+    } else {
+      userModel.findByUid(u, function(user) {
+        if(!user) return res.json({recode: 0});
+        return res.json({recode: 0, info: {nickname: user.nickname}});
+      });
     }
   }
 };
