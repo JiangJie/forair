@@ -1,0 +1,21 @@
+.signin-qq {
+  width: 170px;
+  height: 32px;
+  background: url(/jarvis/img/qq_connect_logo_4.png) no-repeat;
+  margin: 0 auto;
+}
+#signinModal {
+  width: 250px;
+  margin-left: -125px;
+}
+#signinModal .form-horizontal .controls {
+  margin: 0;
+}
+.logo-icon {
+  width: 185px;
+  height: 80px;
+  background: url(/jarvis/img/logo.png);
+}
+.signin-btn {
+  width: 220px;
+}

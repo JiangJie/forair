@@ -7,7 +7,7 @@ require([
   'bootstrap'
 ], function($, user) {
   var cgi = {
-    more: {url: '/product/more/like', method: 'GET'},
+    more: {url: '/product/more/new', method: 'GET'},
     like: {url: '/product/like', method: 'PUT'}
   };
   var start = 0,
@@ -34,7 +34,7 @@ require([
               hasNext = false;
             }
             start = start + res.products.length;
-            var template = '{% for product in products %}<article><div class="details"><h6 title="{{ product.title }}" class="product-title">{{ product.title }}</h6></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><button class="like allike" title="已收藏" value="{{ product._id }}"></button></article>{% endfor %}',
+            var template = '{% for product in products %}<article><div class="details"><h6 title="{{ product.title }}" class="product-title">{{ product.title }}</h6></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><button{% if product.alLike %} class="like ' + alLike + '" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
               context = {products: res.products};
             var content = Jinja.render(template, context);
             content = $(content);
@@ -58,10 +58,8 @@ require([
                     $(self).addClass(alLike);
                     $(self).attr('title', '已收藏');
                   } else {
-                    // $(self).removeClass(alLike);
-                    // $(self).attr('title', '收藏');
-                    $(self).parent('article').remove();
-                    $wallcontent.isotope('reLayout');
+                    $(self).removeClass(alLike);
+                    $(self).attr('title', '收藏');
                   }
                 }
               }, function(err) {

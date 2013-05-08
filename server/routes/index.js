@@ -13,6 +13,7 @@ var route = function(app) {
   app.get('/product/more', product.get);
   app.get('/product/more/like', product.getLike);
   app.get('/product/more/hot', product.getHot);
+  app.get('/product/more/new', product.getNew);
 
   app.put('/product/like/:pid', product.likeOrNot);
 

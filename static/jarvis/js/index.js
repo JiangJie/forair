@@ -1,4 +1,4 @@
-require(['jquery', 'user', 'share', 'top', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($) {
+require(['jquery', 'user', 'share', 'top', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
     more: {url: '/product/more', method: 'GET'},
     like: {url: '/product/like', method: 'PUT'}
@@ -9,6 +9,7 @@ require(['jquery', 'user', 'share', 'top', 'isotope', 'imagesloaded', 'jinja', '
   var alLike = 'allike';
 
   $(document).ready(function() {
+
     $(document).delegate('article .like', 'click', function() {
       var self = this;
       var like = 1;

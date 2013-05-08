@@ -3,6 +3,17 @@ var http = require('http'),
 var _ = require('underscore');
 
 var procudtModel = require('../model/product');
+var MAX_NEW = 60;
+var alLike = function(uid, products) {
+  if(uid && _.isArray(products) && products.length) {
+    products.forEach(function(item) {
+      if(_.isArray(item.like) && _.contains(item.like, uid)) {
+        item.alLike = 1;
+      }
+    });
+  }
+  return products;
+}
 
 module.exports = {
   create: function(req, res, next) {
@@ -15,7 +26,7 @@ module.exports = {
       price = req.body.price,
       twitter = req.body.twitter;
     if(title && url && pic && twitter) {
-      var product = {uid: uid, numid: numid, title: title, url: url, pic: pic, brand: brand, price: price, twitter: twitter};
+      var product = {uid: uid, numid: numid, title: title, url: url, pic: pic, brand: brand, price: price, twitter: twitter, create: new Date()};
       procudtModel.create(product, function(product) {
         if(Object.prototype.toString.call(product) === '[object Error]') return res.json({recode: 0, success: 0, msg: 'already share'});
         return res.json({recode: 0, success: 1});
@@ -29,13 +40,7 @@ module.exports = {
     var start = req.query.start,
       limit = req.query.limit;
     procudtModel.find({start: start, limit: limit}, function(products) {
-      if(products && products.length) {
-        products.forEach(function(item) {
-          if(_.isArray(item.like) && _.contains(item.like, uid)) {
-            item.alLike = 1;
-          }
-        });
-      }
+      products = alLike(uid, products);
       return res.json({recode: 0, products: products});
     });
   },
@@ -71,12 +76,16 @@ module.exports = {
   },
   getLike: function(req, res, next) {
     var uid = req.cookies.uid;
-    var start = req.query.start,
-      limit = req.query.limit;
-    var option = {query: {like: uid}, start: start, limit: limit};
-    procudtModel.find(option, function(products) {
-      return res.json({recode:0, products: products});
-    });
+    if(uid) {
+      var start = req.query.start,
+        limit = req.query.limit;
+      var option = {query: {like: uid}, start: start, limit: limit};
+      procudtModel.find(option, function(products) {
+        return res.json({recode:0, products: products});
+      });
+    } else {
+      return res.json({recode:0, products: null});
+    }
   },
   getHot: function(req, res, next) {
     var uid = req.cookies.uid;
@@ -137,5 +146,18 @@ module.exports = {
     });
     shareReq.write(data);
     shareReq.end();
+  },
+  getNew: function(req, res, next) {
+    var uid = req.cookies.uid;
+    var start = req.query.start,
+      limit = req.query.limit;
+    if(start >= MAX_NEW) {
+      procudtModel.find({sort: {create: -1}, start: start, limit: limit}, function(products) {
+        products = alLike(uid, products);
+        return res.json({recode: 0, products: products});
+      });
+    } else {
+      res.json({recode: 0, products: null});
+    }
   }
 };

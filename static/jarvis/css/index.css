@@ -1,6 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   /*background: url(/jarvis/img/background.png);*/
-  background: rgb(220, 224, 206);
+  /*background: rgb(220, 224, 206);*/
   font-size: 62.5%;
 }
 .float-left {
@@ -14,10 +18,15 @@ body {
 }
 header {
   min-height: 40px;
-  background-image: linear-gradient(to bottom, rgb(78, 78, 12), rgb(77, 114, 12));
+  background-image: linear-gradient(to bottom, rgb(143, 143, 136), rgb(226, 226, 209));
   position: fixed;
   width: 100%;
   z-index: 2;
+}
+.navbar ul.nav > li > a {
+  font-weight: 700;
+  text-shadow: none;
+  color: rgb(80, 80, 80);
 }
 .navbar {
   margin: 0;

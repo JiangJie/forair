@@ -3,19 +3,12 @@ body {
   font-family: Tahoma,"Microsoft Yahei",Arial;
   font-size: 62.5%;
 }
+.margin0 {
+  margin: 0;
+}
 .content {
   max-width: 1024px;
   margin: 0 auto;
-}
-.logo-icon {
-  width: 185px;
-  height: 80px;
-  background: url(/jarvis/img/logo.png);
-}
-.signin-qq {
-  width: 170px;
-  height: 32px;
-  background: url(/jarvis/img/qq_connect_logo_4.png) no-repeat;
 }
 .wc-wording {
   max-width: 664px;
@@ -30,16 +23,6 @@ body {
   -webkit-box-shadow: rgba(34, 25, 25, 0.1) 0px 0px 1px;
   border: 1px solid #E6E4E4;
   border-radius: 5px;
-}
-.signin-btn {
-  width: 220px;
-}
-#signinModal {
-  width: 250px;
-  margin-left: -125px;
-}
-#signinModal .form-horizontal .controls {
-  margin: 0;
 }
 [class^="icon-idog-"], [class*=" icon-idog-"] {
   background-image: url(/jarvis/img/idog-glyphicons-halflings.png);

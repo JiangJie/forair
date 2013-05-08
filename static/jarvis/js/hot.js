@@ -1,10 +1,11 @@
 require([
   'jquery',
-  '/jarvis/js/jquery-plugin/jquery.isotope.min.js',
-  '/jarvis/js/jquery-plugin/jquery.imagesloaded.min.js',
-  '/jarvis/js/jinja.min.js',
+  'user',
+  'isotope',
+  'imagesloaded',
+  'jinja',
   'bootstrap'
-], function($) {
+], function($, user) {
   var cgi = {
     more: {url: '/product/more/hot', method: 'GET'},
     like: {url: '/product/like', method: 'PUT'}
@@ -28,7 +29,7 @@ require([
         data: {start: start, limit: limit}
       }).then(function(res) {
         if(res.recode === 0) {
-          if(res.products.length) {
+          if(res.products && res.products.length) {
             if(res.products.length < limit) {
               hasNext = false;
             }

@@ -1,15 +1,30 @@
-require(['jquery'], function($) {
+define(['jquery'], function($) {
   var cgi = {
     info: {url: '/user/info', method: 'GET'}
-  }
-  $(document).ready(function() {
+  };
+  var getInfo = function(cb) {
     $.ajax({
       url: cgi.info.url,
       type: cgi.info.method
     }).then(function(res) {
-      if(res.recode == 0 && res.info) return $('#nickname').html(res.info.nickname);
+      if(res.recode == 0 && res.info) return cb(res.info);
+      return cb(null);
     }, function(err) {
       console.error(err);
     });
+  };
+  $(document).ready(function() {
+    getInfo(function(user) {
+      if(user) {
+        $('#signinMenu').addClass('hide');
+        $('#signupMenu').addClass('hide');
+        $('#myMenu').removeClass('hide');
+        $('#nickname').html(user.nickname);
+      }
+    });
   });
+
+  return {
+    getInfo: getInfo
+  }
 });
