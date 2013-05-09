@@ -1,6 +1,6 @@
 require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
-    more: {url: '/product/more/hot', method: 'GET'}
+    more: {url: '/my', method: 'GET'}
   };
   var start = 0,
     limit = 15;

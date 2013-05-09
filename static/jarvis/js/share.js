@@ -1,13 +1,13 @@
-require(['jquery'], function($) {
+define(['jquery', 'bootstrap'], function($) {
   var cgi = {
     share: {url: '/product/share', method: 'GET'},
     add: {url: '/product/add', method: 'POST'}
   };
   var twitter = 140;
   $(document).ready(function() {
-    var oldContent = $('div.modal-body').html();
+    var oldContent = $('#shareModal div.modal-body').html();
     $(document).delegate('#switchShare', 'click', function() {
-      $('div.modal-body').html(oldContent);
+      $('#shareModal div.modal-body').html(oldContent);
     });
     $(document).delegate('#pubContent', 'keyup', function() {
       var $pubLeft = $('#pubLeft');
@@ -28,8 +28,8 @@ require(['jquery'], function($) {
       }).then(function(res) {
         if(res.recode == 0) {
           if(res.success) {
-            $('#signinModal').modal('hide');
-            $('div.modal-body').html(oldContent);
+            $('#shareModal').modal('hide');
+            $('#shareModal div.modal-body').html(oldContent);
           } else {
             if(res.msg == 'already share') {
               $('#alreadyShare').removeClass('hide');
@@ -54,14 +54,14 @@ require(['jquery'], function($) {
             context = res.share;
           var content = Jinja.render(template, context);
           content = $(content);
-          $('div.modal-body').html(content);
+          $('#shareModal div.modal-body').html(content);
         }
       }, function(err) {
         console.error(err);
       });
     };
 
-    $(document).delegate('#shareForm', 'click', loadShare);
+    $(document).delegate('#shareForm', 'submit', loadShare);
 
   });
 });

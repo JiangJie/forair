@@ -19,6 +19,8 @@ define(['jquery'], function($) {
         $('#signinMenu').addClass('hide');
         $('#signupMenu').addClass('hide');
         $('#myMenu').removeClass('hide');
+        $('#shareMenu').removeClass('hide');
+        $('#cellectMenu').removeClass('hide');
         $('#nickname').html(user.nickname);
       }
     });

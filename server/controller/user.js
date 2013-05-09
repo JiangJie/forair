@@ -16,10 +16,10 @@ module.exports = {
       auth(uid, skey, function() {
         return next();
       }, function() {
-        return res.end();
+        return res.json({recode: -1, success: 0, msg: 'no auth'});
       });
     } else {
-      return res.end();
+      return res.json({recode: -1, success: 0, msg: 'no auth'});
     }
   },
   isExist: function(req, res, next) {

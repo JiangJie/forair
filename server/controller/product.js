@@ -151,7 +151,7 @@ module.exports = {
     var uid = req.cookies.uid;
     var start = req.query.start,
       limit = req.query.limit;
-    if(start >= MAX_NEW) {
+    if(start < MAX_NEW) {
       procudtModel.find({sort: {create: -1}, start: start, limit: limit}, function(products) {
         products = alLike(uid, products);
         return res.json({recode: 0, products: products});
@@ -159,5 +159,14 @@ module.exports = {
     } else {
       res.json({recode: 0, products: null});
     }
+  },
+  getMy: function(req, res, next) {
+    var uid = req.cookies.uid;
+    var start = req.query.start,
+      limit = req.query.limit;
+    procudtModel.find({query: {uid: uid}, sort: {create: -1}, start: start, limit: limit}, function(products) {
+      products = alLike(uid, products);
+      return res.json({recode: 0, products: products});
+    });
   }
 };

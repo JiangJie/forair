@@ -1,4 +1,8 @@
-require(['jquery'], function($) {
+define(['jquery'], function($) {
+  var isBottom = function() {
+    return $(document).scrollTop() + $(window).height() == $(document).height();
+  };
+
   /* ---------------------------------------------------------------------- */
   /*  back to up
   /* ---------------------------------------------------------------------- */
@@ -35,4 +39,8 @@ require(['jquery'], function($) {
     $('body').append('<div id="backtotop" class="showme"><div class="bttbg"></div></div>');
     initGoToTop();
   });
+
+  return {
+    isBottom: isBottom
+  }
 });

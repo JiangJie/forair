@@ -11,14 +11,15 @@ var route = function(app) {
   // app.post('/admin/product/add', product.create);
 
   app.get('/product/more', product.get);
-  app.get('/product/more/like', product.getLike);
+  app.get('/product/more/like', user.check, product.getLike);
   app.get('/product/more/hot', product.getHot);
   app.get('/product/more/new', product.getNew);
+  app.get('/my', product.getMy);
 
-  app.put('/product/like/:pid', product.likeOrNot);
+  app.put('/product/like/:pid', user.check, product.likeOrNot);
 
-  app.get('/product/share', product.share);
-  app.post('/product/add', product.create);
+  app.get('/product/share', user.check, product.share);
+  app.post('/product/add', user.check, product.create);
 };
 
 module.exports = {
