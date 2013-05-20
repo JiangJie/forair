@@ -7,6 +7,11 @@ var user = {
       return cb(user);
     }));
   },
+  findByEmail: function(email, cb) {
+    db.user.findOne({email: email}, d.intercept(function(user) {
+      return cb(user);
+    }));
+  },
   create: function(user, cb) {
     db.user.insert(user, {safe: true}, d.intercept(function(user) {
       return cb(user);

@@ -2,7 +2,8 @@ var user = require('../controller/user'),
   product = require('../controller/product');
 
 var route = function(app) {
-  app.get('/user/exist', user.isExist);
+  app.get('/user/exist/uid', user.isUidExist);
+  app.get('/user/exist/email', user.isEmailExist);
   app.get('/user/info', user.info);
   app.post('/user/signup', user.signup);
   app.post('/user/signin', user.signin);
@@ -20,6 +21,8 @@ var route = function(app) {
 
   app.get('/product/share', user.check, product.share);
   app.post('/product/add', user.check, product.create);
+
+  app.get('/user/watch', user.check, user.watch);
 };
 
 module.exports = {

@@ -19,17 +19,30 @@
       <h4 id="signupSuccessText" class="hide">注册成功</h4>
       <div class="row-fluid">
         <div class="span7">
-          <div class="form-horizontal">
+          <form class="form-horizontal" id="signupForm">
+            <div class="control-group">
+              <div class="controls">
+                <input type="text" id="signupUid" placeholder="用户名" required="required" pattern="\w[\w\d]*">
+                <span id="uidExist" class="hide">
+                  <i class="icon-idog-remove"></i>
+                  <span class="text-error">该用户名已被注册</span>
+                </span>
+                <span id="uidNotExist" class="hide">
+                  <i class="icon-idog-ok"></i>
+                  <span class="text-success">该用户名可以注册</span>
+                </span>
+              </div>
+            </div>
             <div class="control-group">
               <div class="controls">
                 <input type="email" id="signupEmail" placeholder="邮箱地址" required="required">
                 <span id="emailExist" class="hide">
                   <i class="icon-idog-remove"></i>
-                  <span class="text-error">该邮箱已被注册</span>
+                  <span class="text-error">该邮箱已被使用</span>
                 </span>
                 <span id="emailNotExist" class="hide">
                   <i class="icon-idog-ok"></i>
-                  <span class="text-success">该邮箱可以注册</span>
+                  <span class="text-success">该邮箱可以使用</span>
                 </span>
               </div>
             </div>
@@ -47,10 +60,10 @@
             </div>
             <div class="control-group">
               <div class="controls">
-                <button id="signupSubmit" class="btn btn-warning">立即注册</button>
+                <button type="submit" class="btn btn-warning">立即注册</button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
         <div class="span5">
           <h5>
@@ -74,7 +87,7 @@
       <form class="form-horizontal" action="/user/signin" method="POST">
         <div class="control-group">
           <div class="controls">
-            <input type="email" placeholder="邮箱地址" name="uid" id="signinEmail" required="required"></div>
+            <input type="text" placeholder="用户名" name="uid" id="signinUid" required="required" pattern="\w[\w\d]*"></div>
         </div>
         <div class="control-group">
           <div class="controls">

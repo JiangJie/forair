@@ -22,7 +22,7 @@ module.exports = {
       return res.json({recode: -1, success: 0, msg: 'no auth'});
     }
   },
-  isExist: function(req, res, next) {
+  isUidExist: function(req, res, next) {
     var uid = req.query.uid;
     if(uid && typeof uid === 'string') {
       userModel.findByUid(uid, function(user) {
@@ -33,13 +33,25 @@ module.exports = {
       return res.json({recode: 0, isExist: 0});
     }
   },
+  isEmailExist: function(req, res, next) {
+    var email = req.query.email;
+    if(email && typeof email === 'string') {
+      userModel.findByEmail(email, function(user) {
+        if(!user) return res.json({recode: 0, isExist: 0});
+        return res.json({recode: 0, isExist: 1});
+      });
+    } else {
+      return res.json({recode: 0, isExist: 0});
+    }
+  },
   signup: function(req, res, next) {
     var uid = req.body.uid,
+      email = req.body.email,
       pwd = req.body.pwd,
       rePwd = req.body.rePwd,
       nickname = req.body.nickname;
-    if(uid && pwd && rePwd && nickname && (pwd === rePwd)) {
-      var user = {uid: uid, pwd: pwd, nickname: nickname};
+    if(uid && email && pwd && rePwd && nickname && (pwd === rePwd)) {
+      var user = {uid: uid, email: email, pwd: pwd, nickname: nickname};
       userModel.create(user, function() {
         return res.json({recode: 0, success: 1});
       });
