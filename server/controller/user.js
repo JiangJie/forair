@@ -110,5 +110,17 @@ module.exports = {
         return res.json({recode: 0, info: {nickname: user.nickname}});
       });
     }
+  },
+  watch: function(req, res, next) {
+
+  },
+  fillNickname: function(req, res, next) {
+    var product = req.dataset.product;
+      u = product.uid;
+    userModel.findByUid(u, function(user) {
+      if(!user) product.nickname = u;
+      else product.nickname = user.nickname;
+      return res.json({recode: 0, product: product});
+    });
   }
 };

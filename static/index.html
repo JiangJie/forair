@@ -46,7 +46,7 @@
           <li class="dropdown hide" id="myMenu">
             <a href="/my.html" class="dropdown-toggle"><span id="nickname"></span> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">我的收藏</a></li>
+              <li><a tabindex="-1" href="/collect.html">我的收藏</a></li>
               <li><a tabindex="-1" href="#">我关注的人</a></li>
               <li class="divider"></li>
               <li><a tabindex="-1" href="/user/logout">退出</a></li>
@@ -59,6 +59,14 @@
             <a href="/signup.html">注册</a>
           </li>
         </ul>
+        <div class="search-wrap">
+          <form accept-charset="UTF-8" action="/" method="get">
+            <input type="search" name="q" placeholder="搜索..." class="search-query search" x-webkit-speech speech lang="zh-CN">
+            <button type="submit" class="tip-right" data-original-title="Search">
+              <span class="icon icon-search"></span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </header>

@@ -16,6 +16,7 @@ var route = function(app) {
   app.get('/product/more/hot', product.getHot);
   app.get('/product/more/new', product.getNew);
   app.get('/my', product.getMy);
+  app.get('/product/detail/:pid', product.getById, user.fillNickname);
 
   app.put('/product/like/:pid', user.check, product.likeOrNot);
 

@@ -38,8 +38,10 @@ module.exports = {
   get: function(req, res, next) {
     var uid = req.cookies.uid;
     var start = req.query.start,
-      limit = req.query.limit;
-    procudtModel.find({start: start, limit: limit}, function(products) {
+      limit = req.query.limit,
+      q = req.query.q;
+    q = new RegExp(q, 'i');
+    procudtModel.find({query: {title: q}, start: start, limit: limit}, function(products) {
       products = alLike(uid, products);
       return res.json({recode: 0, products: products});
     });
@@ -168,5 +170,20 @@ module.exports = {
       products = alLike(uid, products);
       return res.json({recode: 0, products: products});
     });
+  },
+  getById: function(req, res, next) {
+    var uid = req.cookies.uid;
+    var pid = req.params.pid;
+    if(pid) {
+      procudtModel.findById(pid, function(product) {
+        if(product) {
+          req.dataset = {};
+          req.dataset.product = product;
+          return next();
+        } else {
+          return res.json({recode: 0, product: null});
+        }
+      });
+    }
   }
 };

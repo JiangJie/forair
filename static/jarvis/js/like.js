@@ -1,6 +1,6 @@
 define(['jquery'], function($) {
   var cgi = {
-    like: {url: '/product/like', method: 'PUT'}
+    like: {url: '/product/like/', method: 'PUT'}
   };
   var alLike = 'al-like';
 
@@ -12,7 +12,7 @@ define(['jquery'], function($) {
         like = 0;
       }
       $.ajax({
-        url: cgi.like.url + '/' + this.value,
+        url: cgi.like.url + this.value,
         type: cgi.like.method,
         data: {like: like}
       }).then(function(res) {

@@ -109,6 +109,26 @@ h6.product-title {
   white-space:nowrap;
   line-height: 20px;
 }
+.search-wrap {
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  line-height: 40px;
+}
+.search {
+  padding-left: 30px !important;
+}
+.tip-right {
+  position: absolute;
+  left: 10px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  top: 12px;
+}
 
 footer{
   line-height: 20px;

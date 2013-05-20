@@ -2,6 +2,17 @@ require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'j
   var cgi = {
     more: {url: '/product/more', method: 'GET'}
   };
+  var getUrlParameters = (function(a) {
+    if (a == '') return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=');
+        if (p.length != 2) continue;
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, ' '));
+    }
+    return b;
+  })(window.location.search.substr(1).split('&'));
   var start = 0,
     limit = 15;
   var hasNext = true;
@@ -14,10 +25,11 @@ require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'j
     });
 
     var loadProducts = function() {
+      var q = getUrlParameters['q'];
       $.ajax({
         url: cgi.more.url,
         type: cgi.more.method,
-        data: {start: start, limit: limit}
+        data: {start: start, limit: limit, q: q}
       }).then(function(res) {
         if(res.recode === 0) {
           if(res.products.length) {
@@ -25,7 +37,7 @@ require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'j
               hasNext = false;
             }
             start = start + res.products.length;
-            var template = '{% for product in products %}<article><div class="details"><h6 class="product-title" title="{{ product.title }}">{{ product.title }}</h6></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><span class="price">￥{{ product.price }}</span><button{% if product.alLike %} class="like al-like" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
+            var template = '{% for product in products %}<article><div class="details"><h6 class="product-title" title="{{ product.title }}">{{ product.title }}</h6></div><a href="/detail.html?id={{ product._id }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><span class="price">￥{{ product.price }}</span><button{% if product.alLike %} class="like al-like" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
               context = {products: res.products};
             var content = Jinja.render(template, context);
             content = $(content);
