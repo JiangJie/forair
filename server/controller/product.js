@@ -177,6 +177,7 @@ module.exports = {
     if(pid) {
       procudtModel.findById(pid, function(product) {
         if(product) {
+          if(!product.create) product.create = new Date();
           req.dataset = {};
           req.dataset.product = product;
           return next();

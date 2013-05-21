@@ -20,6 +20,7 @@ header {
   min-height: 40px;
   /*background-image: linear-gradient(to bottom, rgb(143, 143, 136), rgb(226, 226, 209));*/
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 2;
   box-shadow: 0 .0625em .1875em rgba(0,0,0,0.4),inset 0 -1px rgba(255,255,255,0.3);
@@ -292,4 +293,53 @@ footer{
 }
 #backtotop .bttbg:hover {
     background-position: left bottom;
+}
+
+
+.detail {
+  padding: 0 50px;
+}
+.detail-link {
+  margin: 0 auto;
+}
+.detail-pic-wrap {
+  display: block;
+  margin: 0 auto;
+  max-width: 300px;
+  max-height: 300px;
+}
+.detail-title {
+  color: #666;
+  font-size: 1.6em;
+}
+.detail-title a {
+  text-decoration: none;
+}
+.detail-info {
+  font-size: 1.2em;
+}
+.detail-nick, .detail-create {
+  color: #f89406;
+}
+.conment {
+  overflow: hidden;
+}
+.comment-content {
+  width: 600px;
+  height: 80px;
+}
+.comment-list {
+  list-style: none;
+  margin-left: 0;
+}
+.comment-list li {
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+.comment-nick {
+  color: #5fb7e9;
+  margin-right: 10px;
+}
+.comment-create {
+  color: #f89406;
 }

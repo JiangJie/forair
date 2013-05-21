@@ -4,6 +4,7 @@
   <title>iDog - 爱犬之家</title>
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"/>
   <link rel="stylesheet" href="/jarvis/css/signin.css">
+  <link rel="stylesheet" href="/jarvis/css/signup.css">
   <link rel="stylesheet" href="/jarvis/css/index.css">
 </head>
 <body>
@@ -72,7 +73,22 @@
   </header>
   <section class="main">
     <div class="content">
-      <section id="wallcontent"></section>
+      <section class="detail">
+        <div id="info"></div>
+        <div class="conment">
+          <div><h5><span class="icon icon-comments"></span>评论</h5></div>
+          <ul class="comment-list" id="commentList"></ul>
+          <div class="comment-replybox">
+            <form action="/product/comment/pid" method="PUT" id="commentForm">
+              <div class="comment-textarea">
+                <input type="hidden" name="pid" id="commentPid"/>
+                <textarea name="content" id="conmentTextarea" disabled="disabled" required="required" class="textarea comment-content" title="请先登录"></textarea>
+              </div>
+              <div><input type="submit" id="commentSubmit" value="提交" disabled="disabled" class="btn"></div>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   </section>
   <footer id="footer"></footer>

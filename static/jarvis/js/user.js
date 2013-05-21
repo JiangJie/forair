@@ -22,6 +22,9 @@ define(['jquery'], function($) {
         $('#shareMenu').removeClass('hide');
         $('#cellectMenu').removeClass('hide');
         $('#nickname').html(user.nickname);
+        $('#conmentTextarea').removeAttr('disabled');
+        $('#conmentTextarea').removeAttr('title');
+        $('#commentSubmit').removeAttr('disabled');
       }
     });
   });

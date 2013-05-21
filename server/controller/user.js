@@ -120,6 +120,13 @@ module.exports = {
     userModel.findByUid(u, function(user) {
       if(!user) product.nickname = u;
       else product.nickname = user.nickname;
+      // if(product.comment && product.comment.length) {
+      //   product.comment.forEach(function(item) {
+      //     userModel.findByUid(item.uid, function(user) {
+      //       item.nickname = user.nickname;
+      //     });
+      //   });
+      // }
       return res.json({recode: 0, product: product});
     });
   }

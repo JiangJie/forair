@@ -1,5 +1,6 @@
 var user = require('../controller/user'),
-  product = require('../controller/product');
+  product = require('../controller/product'),
+  comment = require('../controller/comment');
 
 var route = function(app) {
   app.get('/user/exist/uid', user.isUidExist);
@@ -16,7 +17,7 @@ var route = function(app) {
   app.get('/product/more/hot', product.getHot);
   app.get('/product/more/new', product.getNew);
   app.get('/my', product.getMy);
-  app.get('/product/detail/:pid', product.getById, user.fillNickname);
+  app.get('/product/detail/:pid', product.getById, comment.get, user.fillNickname);
 
   app.put('/product/like/:pid', user.check, product.likeOrNot);
 
@@ -24,6 +25,8 @@ var route = function(app) {
   app.post('/product/add', user.check, product.create);
 
   app.get('/user/watch', user.check, user.watch);
+
+  app.post('/comment/add/', user.check, comment.create);
 };
 
 module.exports = {
