@@ -1,4 +1,4 @@
-require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user, top) {
+require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user, top) {
   var cgi = {
     more: {url: '/product/more', method: 'GET'}
   };

@@ -1,4 +1,4 @@
-require(['jquery', 'user', 'like', 'share', 'jinja', 'bootstrap'], function($, user, top) {
+require(['jquery', 'user', 'signin', 'like', 'share', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
     detail: {url: '/product/detail/', method: 'GET'},
     comment: {url: '/comment/add/', method: 'POST'}

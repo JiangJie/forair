@@ -66,7 +66,7 @@ module.exports = {
       auth(uid, pwd, function() {
         res.cookie('uid', uid, {maxAge: 864000000000});
         res.cookie('skey', pwd, {maxAge: 864000000000});
-        return res.redirect('/');
+        return res.json({recode: 0, success: 1});
       }, function() {
         return res.json({recode: 0, success: 0});
       });

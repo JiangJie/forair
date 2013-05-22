@@ -5,11 +5,6 @@ require(['jquery', 'bootstrap'], function($) {
     signup: {url: '/user/signup', method: 'POST'}
   };
 
-  $(document).delegate('#signinModal', 'show', function() {
-    $('#signinUid').val('');
-    $('#signinPassword').val('');
-  });
-
   $(document).delegate('#signupUid', 'change', function() {
     $('#uidExist').addClass('hide');
     var self = this;

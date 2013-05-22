@@ -1,4 +1,4 @@
-require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
+require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
     more: {url: '/product/more/hot', method: 'GET'}
   };
@@ -25,7 +25,7 @@ require(['jquery', 'user', 'top', 'like', 'share', 'isotope', 'imagesloaded', 'j
               hasNext = false;
             }
             start = start + res.products.length;
-            var template = '{% for product in products %}<article><div class="details"><h6 title="{{ product.title }}" class="product-title">{{ product.title }}</h6></div><a href="{{ product.url }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><span class="price">￥{{ product.price }}</span><button{% if product.alLike %} class="like al-like" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
+            var template = '{% for product in products %}<article><div class="details"><h6 title="{{ product.title }}" class="product-title">{{ product.title }}</h6></div><a href="/detail.html?id={{ product._id }}" target="_blank" class="linkc"><img src="{{ product.pic }}" alt="{{ product.title }}"></a><span class="price">￥{{ product.price }}</span><button{% if product.alLike %} class="like al-like" title="已收藏" {% else %} class="like" title="收藏" {% endif %}value="{{ product._id }}"></button></article>{% endfor %}',
               context = {products: res.products};
             var content = Jinja.render(template, context);
             content = $(content);
