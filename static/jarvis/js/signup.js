@@ -1,4 +1,4 @@
-require(['jquery', 'bootstrap'], function($) {
+require(['jquery', 'signin', 'bootstrap'], function($) {
   var cgi = {
     uidExist: {url: '/user/exist/uid', method: 'GET'},
     emailExist: {url: '/user/exist/email', method: 'GET'},
