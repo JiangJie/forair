@@ -84,7 +84,8 @@
       <a href="/" class="show logo-icon"></a>
     </div>
     <div class="modal-body">
-      <form class="form-horizontal" action="/user/signin" method="POST">
+      <p class="red hide" id="signinError">用户名或密码错误</p>
+      <form class="form-horizontal" id="signinForm" action="/user/signin" method="POST">
         <div class="control-group">
           <div class="controls">
             <input type="text" placeholder="用户名" name="uid" id="signinUid" required="required" pattern="\w[\w\d]*"></div>
