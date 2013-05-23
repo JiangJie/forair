@@ -117,7 +117,7 @@ module.exports = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': data.length,
-        'Cookie': '__ud_=117fyqg; __mogujie=c%2FTBIkPCcYHKYfKK87X2Khz9ZFMzfHQmKQJGrziyN21LXVYyq70lDo8C341eGbWB9VaJ9NFWjpJdKr3MJUUcyA%3D%3D; __pk_=OALpe3nB3gYaqZngRv%2FOZgPhhdl6G8XUNzkG%2B3rmkgRMfw'
+        'Cookie': '__ud_=11j4lwo; __mogujie=LJ2NUmrGP9ktm2JFvXKLzmVoHHt47CRJ6eCzaKEqn7mEXohD2UPMEDf1ck9%2FVYHhrlsOX73r9m3NWVt7cdd0ag%3D%3D; __pk_=ihUJ95OKnPsJK41Ouwr7%2FcF%2F21iiNelRhovegGvnSku6cA'
       }
     }, function(shareRes) {
       shareRes.setEncoding('utf8');
