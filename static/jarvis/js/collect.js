@@ -1,6 +1,6 @@
 require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user, top) {
   var cgi = {
-    more: {url: '/product/more/like', method: 'GET'}
+    more: {url: '/product/more/like', method: 'GET'} // 获取收藏的产品列表
   };
   var start = 0,
     limit = 15;

@@ -1,6 +1,6 @@
 require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
-    more: {url: '/product/more/hot', method: 'GET'}
+    more: {url: '/product/more/hot', method: 'GET'} // 获取今日最火的产品
   };
   var start = 0,
     limit = 15;

@@ -1,7 +1,7 @@
 require(['jquery', 'user', 'signin', 'like', 'share', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
-    detail: {url: '/product/detail/', method: 'GET'},
-    comment: {url: '/comment/add/', method: 'POST'}
+    detail: {url: '/product/detail/', method: 'GET'}, // 获取产品详情
+    comment: {url: '/comment/add/', method: 'POST'} // 添加评论
   };
   var getUrlParameters = (function(a) {
     if (a == '') return {};

@@ -1,8 +1,8 @@
 require(['jquery', 'signin', 'bootstrap'], function($) {
   var cgi = {
-    uidExist: {url: '/user/exist/uid', method: 'GET'},
-    emailExist: {url: '/user/exist/email', method: 'GET'},
-    signup: {url: '/user/signup', method: 'POST'}
+    uidExist: {url: '/user/exist/uid', method: 'GET'}, // 判断用户名是否存在
+    emailExist: {url: '/user/exist/email', method: 'GET'}, // 判断email是否已被使用
+    signup: {url: '/user/signup', method: 'POST'} // 注册
   };
 
   $(document).delegate('#signupUid', 'change', function() {

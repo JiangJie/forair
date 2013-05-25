@@ -1,6 +1,6 @@
 require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user) {
   var cgi = {
-    more: {url: '/my', method: 'GET'}
+    more: {url: '/my', method: 'GET'} // 获取我分享的产品
   };
   var start = 0,
     limit = 15;

@@ -1,6 +1,6 @@
 require(['jquery', 'bootstrap'], function($) {
   var cgi = {
-    signin: {url: '/user/signin', method: 'POST'}
+    signin: {url: '/user/signin', method: 'POST'} // 登录
   };
 
   $(document).delegate('#signinModal', 'show', function() {

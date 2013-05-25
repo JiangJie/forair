@@ -1,6 +1,6 @@
 define(['jquery'], function($) {
   var cgi = {
-    like: {url: '/product/like/', method: 'PUT'}
+    like: {url: '/product/like/', method: 'PUT'} // 获取收藏的产品
   };
   var alLike = 'al-like';
 

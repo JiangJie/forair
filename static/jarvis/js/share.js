@@ -1,7 +1,7 @@
 define(['jquery', 'bootstrap'], function($) {
   var cgi = {
-    share: {url: '/product/share', method: 'GET'},
-    add: {url: '/product/add', method: 'POST'}
+    share: {url: '/product/share', method: 'GET'}, // 根据淘宝等链接获取产品信息
+    add: {url: '/product/add', method: 'POST'} // 分享一件产品
   };
   var twitter = 140;
   $(document).ready(function() {

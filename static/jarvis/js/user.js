@@ -1,6 +1,6 @@
 define(['jquery'], function($) {
   var cgi = {
-    info: {url: '/user/info', method: 'GET'}
+    info: {url: '/user/info', method: 'GET'} // 获取用户信息
   };
   var getInfo = function(cb) {
     $.ajax({

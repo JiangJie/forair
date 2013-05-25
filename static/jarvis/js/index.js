@@ -1,6 +1,6 @@
 require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesloaded', 'jinja', 'bootstrap'], function($, user, top) {
   var cgi = {
-    more: {url: '/product/more', method: 'GET'}
+    more: {url: '/product/more', method: 'GET'} // 获取产品列表
   };
   var getUrlParameters = (function(a) {
     if (a == '') return {};
