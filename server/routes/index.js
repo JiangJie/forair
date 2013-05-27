@@ -12,6 +12,7 @@ var route = function(app) {
 
   // app.post('/admin/product/add', product.create);
 
+  // app.get('/:tid', product.get);
   app.get('/product/more', product.get);
   app.get('/product/more/like', user.check, product.getLike);
   app.get('/product/more/hot', product.getHot);

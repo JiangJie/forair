@@ -25,11 +25,13 @@ require(['jquery', 'user', 'top', 'signin', 'like', 'share', 'isotope', 'imagesl
     });
 
     var loadProducts = function() {
-      var q = getUrlParameters['q'];
+      var q = getUrlParameters['q'],
+        t = getUrlParameters['t'];
+      $($('.nav-wrap .nav-list li')[t - 1]).addClass('active');
       $.ajax({
         url: cgi.more.url,
         type: cgi.more.method,
-        data: {start: start, limit: limit, q: q}
+        data: {start: start, limit: limit, q: q, t: t}
       }).then(function(res) {
         if(res.recode === 0) {
           if(res.products.length) {

@@ -24,9 +24,10 @@ module.exports = {
       pic = req.body.pic,
       brand = req.body.brand,
       price = req.body.price,
+      type = req.body.type,
       twitter = req.body.twitter;
     if(title && url && pic && twitter) {
-      var product = {uid: uid, numid: numid, title: title, url: url, pic: pic, brand: brand, price: price, twitter: twitter, create: new Date()};
+      var product = {uid: uid, numid: numid, title: title, url: url, pic: pic, brand: brand, price: price, type: type, twitter: twitter, create: new Date()};
       procudtModel.create(product, function(product) {
         if(Object.prototype.toString.call(product) === '[object Error]') return res.json({recode: 0, success: 0, msg: 'already share'});
         return res.json({recode: 0, success: 1});
@@ -39,9 +40,17 @@ module.exports = {
     var uid = req.cookies.uid;
     var start = req.query.start,
       limit = req.query.limit,
-      q = req.query.q;
-    q = new RegExp(q, 'i');
-    procudtModel.find({query: {title: q}, start: start, limit: limit}, function(products) {
+      q = req.query.q,
+      t = req.query.t;
+    var query = {};
+    if(q) {
+      q = new RegExp(q, 'i');
+      query.title = q;
+    }
+    if(t) {
+      query.type = t;
+    }
+    procudtModel.find({query: query, start: start, limit: limit}, function(products) {
       products = alLike(uid, products);
       return res.json({recode: 0, products: products});
     });

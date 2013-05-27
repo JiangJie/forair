@@ -39,6 +39,9 @@ header {
   max-width: 1024px;
   margin: 0 auto;
 }
+.content section {
+  margin-left: 155px;
+}
 .logo {
   display: inline-block;
   width: 92px;
@@ -76,7 +79,7 @@ article .like:hover {
 }
 
 article {
-  width: 181px;
+  width: 170px;
   margin: 0 15px 10px 0;
   padding: 10px;
   background: #EEE;
@@ -130,6 +133,33 @@ h6.product-title {
   color: #aaa;
   top: 12px;
 }
+.nav-wrap {
+  position: fixed;
+  width: 150px;
+  top: 46px;
+}
+.nav-wrap .nav {
+  padding: 0;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.065);
+  }
+.nav .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.active .icon-chevron-right {
+  opacity: 1;
+}
+.nav-list > li > a {
+  display: block;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
 
 footer{
   line-height: 20px;
@@ -168,13 +198,12 @@ footer{
   color: #999;
   height: 30px;
   line-height: 30px;
-  margin-bottom: 20px;
   overflow: hidden;
 }
 .share-content > p > span {
   margin-left: 10px;
 }
-.share-content > p > span:first-child {
+.share-content > p:first-child > span:first-child {
   color: #ff74a9;
   font-size: 1.6em;
 }
@@ -184,6 +213,9 @@ footer{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.twitter-wrap {
+  height: 70px;
 }
 .pub-button {
   border: none;
@@ -320,6 +352,9 @@ footer{
 }
 .detail-nick, .detail-create {
   color: #f89406;
+}
+.detail-twitter {
+  color: #ff6699;
 }
 .conment {
   overflow: hidden;

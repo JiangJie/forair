@@ -50,7 +50,7 @@ require(['jquery', 'user', 'signin', 'like', 'share', 'jinja', 'bootstrap'], fun
           if(product) {
             $('#commentPid').val(product._id);
             // var template = '<p>由{{ product.nickname }}在{{ product.create|date("%Y-%m-%d %H:%M:%S") }}分享</p><img src="{{ product.pic }}"><div>评论区</div>',
-            var template = '<p class="detail-title"><a href="{{ product.url }}">{{ product.title }}</a></p><p class="detail-info">由<span class="detail-nick">{{ product.nickname }}</span>在<span class="detail-create">{{ product.create }}</span>分享</p><div><a href="{{ product.url }}" class="detail-pic-wrap"><img src="{{ product.pic }}"></a></div>',
+            var template = '<p class="detail-title"><a href="{{ product.url }}">{{ product.title }}</a></p><p class="detail-info">由<span class="detail-nick">{{ product.nickname }}</span>在<span class="detail-create">{{ product.create }}</span>分享</p><p><span class="detail-twitter">分享心情：</span>{{ product.twitter }}</p><div><a href="{{ product.url }}" class="detail-pic-wrap"><img src="{{ product.pic }}"></a></div>',
               context = {product: product};
             var content = Jinja.render(template, context);
             content = $(content);

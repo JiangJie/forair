@@ -24,7 +24,10 @@ require(['jquery', 'bootstrap'], function($) {
         data: $(self).serialize()
       }).then(function(res) {
         if(res.recode === 0) {
-          if(res.success) return window.location.reload();
+          if(res.success) {
+            if(window.location.pathname == '/signup.html') return window.location.href = '/';
+            return window.location.reload();
+          }
           $('#signinModal .modal-body #signinError').removeClass('hide');
         }
       }, function(res) {
