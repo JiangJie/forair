@@ -50,7 +50,7 @@ module.exports = {
     if(t) {
       query.type = t;
     }
-    procudtModel.find({query: query, start: start, limit: limit}, function(products) {
+    procudtModel.find({query: query, start: start, limit: limit, sort: {create: -1}}, function(products) {
       products = alLike(uid, products);
       return res.json({recode: 0, products: products});
     });
